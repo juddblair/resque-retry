@@ -108,6 +108,7 @@ module Resque
       # @api public
       def retry_attempt
         @retry_attempt ||= 0
+        @retry_attempt.is_a? Redis::Future ? @retry_attempt.value : @retry_attempt
       end
 
       # @abstract
